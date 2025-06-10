@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MLBB Diamond Recharge Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>MLBB Diamond Recharge</h1>
+    <p class="subtitle">Fast, safe, and easy top-up for Mobile Legends: Bang Bang</p>
+  </header>
+  <main>
+    <form id="rechargeForm">
+      <div class="form-group">
+        <label for="mlbbId">MLBB User ID</label>
+        <input type="text" id="mlbbId" name="mlbbId" required placeholder="e.g. 12345678">
+      </div>
+      <div class="form-group">
+        <label for="serverId">Server ID</label>
+        <input type="text" id="serverId" name="serverId" required placeholder="e.g. 1234">
+      </div>
+      <div class="form-group">
+        <label for="diamonds">Select Diamond Package</label>
+        <select id="diamonds" name="diamonds" required>
+          <option value="" disabled selected>Choose a package</option>
+          <option value="50">50 Diamonds - $1</option>
+          <option value="150">150 Diamonds - $3</option>
+          <option value="250">250 Diamonds - $5</option>
+          <option value="500">500 Diamonds - $10</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Payment Method</label>
+        <div class="payment-options">
+          <label><input type="radio" name="payment" value="GPay" required> GPay</label>
+          <label><input type="radio" name="payment" value="PayPal"> PayPal</label>
+          <label><input type="radio" name="payment" value="Credit Card"> Credit Card</label>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Recharge Now</button>
+    </form>
+    <div id="confirmation" class="hidden">
+      <h2>Recharge Submitted!</h2>
+      <p>Thank you for using our service. Your recharge request has been received (demo only).</p>
+      <button onclick="window.location.reload()">Recharge Again</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 MLBB Recharge Demo. Not affiliated with Moonton.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #15172b;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background: #1e2149;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+}
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  color: #ffe66d;
+  letter-spacing: 2px;
+}
+.subtitle {
+  font-size: 1.1rem;
+  color: #c8c8c8;
+}
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  background: #23244d;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.3);
+  max-width: 370px;
+  width: 100%;
+  margin-top: 2rem;
+}
+.form-group {
+  margin-bottom: 1.3rem;
+}
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #ffe66d;
+}
+input[type="text"], select {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #191a36;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+input[type="text"]:focus, select:focus {
+  outline: 2px solid #ffe66d;
+}
+.payment-options {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.payment-options label {
+  color: #fff;
+  font-weight: 400;
+}
+.submit-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(90deg, #ffe66d 40%, #f7b42c 100%);
+  color: #1e2149;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+.submit-btn:hover {
+  background: linear-gradient(90deg, #f7b42c 30%, #ffe66d 100%);
+}
+#confirmation {
+  background: #23244d;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  text-align: center;
+  max-width: 370px;
+  width: 100%;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+}
+#confirmation h2 {
+  color: #ffe66d;
+}
+#confirmation button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background: #ffe66d;
+  color: #1e2149;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+}
+#confirmation button:hover {
+  background: #f7b42c;
+}
+.hidden {
+  display: none;
+}
+footer {
+  text-align: center;
+  padding: 1.2rem 0 0.7rem 0;
+  background: #1e2149;
+  color: #888;
+  font-size: 0.98rem;
+}
+@media (max-width: 480px) {
+  form, #confirmation {
+    padding: 1rem;
+    max-width: 95vw;
+  }
+  header h1 {
+    font-size: 1.7rem;
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('rechargeForm');
+  const confirmation = document.getElementById('confirmation');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Normally here you'd send data to a backend
+    form.classList.add('hidden');
+    confirmation.classList.remove('hidden');
+  });
+});
